@@ -27,7 +27,8 @@ echo -e "[*] Checking for required enumdb libraries"
 if [[ $(python3 -c "import MySQLdb" 2>&1) == *"No module"* ]]
 then
     echo -e "[*] Installing python3-MySQLdb"
-    apt-get install python3-mysqldb -y
+    apt-get install python3-pip
+    pip3 install mysqlclient
 else
     echo "[+] MySQLdb installed"
 fi
@@ -35,7 +36,9 @@ fi
 if [[ $(python3 -c "import pymssql" 2>&1) == *"No module"* ]]
 then
     echo -e "[*] Installing python3-pymssql"
-    apt-get install python3-pymssql -y
+    apt-get install unixodbc unixodbc-dev freetds-dev freetds-bin tdsodbc
+    pip3 install pymssql
+    
 else
     echo "[+] pymssql installed"
 fi
@@ -43,7 +46,7 @@ fi
 if [[ $(python3 -c "import openpyxl" 2>&1) == *"No module"* ]]
 then
     echo -e "[*] Installing python3-openpyxl"
-    apt-get install python3-openpyxl -y
+    pip3 isntall openpyxl
 else
     echo "[+] openpyxl installed"
 fi
