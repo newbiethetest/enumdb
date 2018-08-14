@@ -28,6 +28,7 @@ if [[ $(python3 -c "import MySQLdb" 2>&1) == *"No module"* ]]
 then
     echo -e "[*] Installing python3-MySQLdb"
     apt-get install python3-pip
+    apt-get install libmysqlclient-dev
     pip3 install mysqlclient
 else
     echo "[+] MySQLdb installed"
