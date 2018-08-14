@@ -46,7 +46,7 @@ fi
 if [[ $(python3 -c "import openpyxl" 2>&1) == *"No module"* ]]
 then
     echo -e "[*] Installing python3-openpyxl"
-    pip3 isntall openpyxl
+    pip3 install openpyxl
 else
     echo "[+] openpyxl installed"
 fi
