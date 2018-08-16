@@ -97,6 +97,10 @@ class mysql():
             con = MySQLdb.connect(host=host, port=port, user=user, password=passwd, connect_timeout=3)
             con.query_timeout = 15
             print_success("Connection established {}:{}@{}".format(user,passwd,host))
+            fo=open('result_3306.txt','a+')
+            mes="%s:%s:%s"%(user,passwd,host)
+            fo.writelines(mes+'\n')
+            fo.close()
             return con
         except Exception as e:
             print_failure("Login failed {}:{}@{}".format(user,passwd,host))
@@ -139,12 +143,18 @@ class mysql():
 ##########################################
 # MSSQL DB Class
 ##########################################
+
+
 class mssql():
 
     def connect(self, host, port, user, passwd):
         try:
             con = pymssql.connect(server=host, port=port, user=user, password=passwd, login_timeout=3, timeout=15)
             print_success("Connection established {}:{}@{}".format(user,passwd,host))
+            fo=open('result_1433.txt','a+')
+            mes="%s:%s:%s"%(user,passwd,host)
+            fo.writelines(mes+'\n')
+            fo.close()
             return con
         except Exception as e:
             print_failure("Login failed {}:{}@{}".format(user,passwd,host))
